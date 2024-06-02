@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class Taskcontroller {
 
-    @GetMapping("/create")
-    public String create() {
-        return "create";
+    @GetMapping("/cadastro")
+    public String cadastro() {
+        return "cadastro";
     }
     
 }
