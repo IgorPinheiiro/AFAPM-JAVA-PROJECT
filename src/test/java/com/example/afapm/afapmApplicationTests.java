@@ -1,10 +1,10 @@
-package com.example.igor;
+package com.example.afapm;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class IgorApplicationTests {
+class afapmApplicationTests {
 
 	@Test
 	void contextLoads() {
