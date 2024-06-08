@@ -1,0 +1,26 @@
+server:
+  port: 8080 
+
+spring:
+  datasource:
+    url: jdbc:postgresql://dpg-cpid5ukf7o1s73bg0flg-a.oregon-postgres.render.com/postgre_cs91
+    username: postgres
+    password: c4Jjt0Px8qj9SHVn2KOrY09M9NiUq3ku
+    driver-class-name: org.postgresql.Driver
+    initialize: true
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+
+  jpa:
+    hibernate:
+      ddl-auto: update  
+    show-sql: true
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  sql:
+    init:
+      schema-locations: classpath:/schema-postgresql.sql
+      mode: always
+      platform: postgres

@@ -1,16 +1,19 @@
-FROM ubuntu:latest AS build
+FROM openjdk:17-jdk-alpine
 
-RUN apt-get update
-RUN apt-get install openjdk-17-jdk -y
-COPY . .
+WORKDIR /app
 
-RUN apt-get install maven -y
-RUN mvn clean install 
+COPY pom.xml .
 
-FROM openjdk:17-jdk-slim
+COPY src ./src
 
-EXPOSE 8080
+COPY mvnw .
 
-COPY --from=build /target/deploy_render-1.0.0.jar app.jar
+RUN ./mvnw dependency:go-offline
 
-ENTRYPOINT [ "java", "-jar", "app.jar" ]
+COPY .mvn .mvn
+
+RUN chmod 777 mvnw
+
+RUN ./mvnw package
+
+CMD ["java", "-jar", "target/igor-0.0.1-SNAPSHOT.jar"]
